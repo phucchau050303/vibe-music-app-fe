@@ -26,12 +26,11 @@ export const useMusicStore = defineStore('musicSearch', {
 
         async submitRequest(){
             const promptData = {prompt: this.prompt};
-            
             this.isLoading = true;
 
             try {
                 const response = await api.getMusic(promptData);
-                console.log("📦 FULL RESPONSE:", response);
+                // console.log("📦 FULL RESPONSE:", response);
                 if (response.status === 200) {
                     console.log("Inside if block");
                     console.log("Repsonse Data: ", response.data);
@@ -39,7 +38,6 @@ export const useMusicStore = defineStore('musicSearch', {
                     const parsedOutput = JSON.parse(outputString);
                     this.playlists = parsedOutput;
                     this.prompt = "";
-                    console.log(this.playlists[2].playlistLink)
                 }
   
             } catch (errorLog) {
