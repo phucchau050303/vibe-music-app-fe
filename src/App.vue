@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import PromtWindow from './components/PromtWindow.vue';
+import PageTitle from './components/PageTitle.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <PromtWindow/>
+  <PageTitle/>
+  <RouterView/>
 </template>
