@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { errorMessages } from "vue/compiler-sfc";
 import api from "../services/api";
 
 interface Playlist{
