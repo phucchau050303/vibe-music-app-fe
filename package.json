@@ -12,7 +12,9 @@
     "axios": "^1.15.0",
     "bootstrap": "^5.3.8",
     "pinia": "^3.0.4",
-    "vue": "^3.5.32"
+    "router-view": "^1.1.7",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
   },
   "devDependencies": {
     "@types/node": "^24.12.2",
@@ -20,6 +22,7 @@
     "@vue/tsconfig": "^0.9.1",
     "typescript": "~6.0.2",
     "vite": "^8.0.4",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.2.6",
+    "vue-router": "^5.0.4"
   }
 }
