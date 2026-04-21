@@ -11,8 +11,10 @@
         store.setPromt(target.value);
     };
     const handleSubmit = async () => {
-        await store.submitRequest()
-        router.push('/results')
+        await store.submitRequest();
+        if(store.fetchingStatus == "SUCCEEDED") {
+            router.push('/results')
+        }
     }
 </script>
 

@@ -15,6 +15,7 @@ export const useMusicStore = defineStore('musicSearch', {
             prompt: "",
             playlists: [] as Playlist[],
             isLoading: false,
+            fetchingStatus: "FAILED"
         }
     },
 
@@ -26,17 +27,17 @@ export const useMusicStore = defineStore('musicSearch', {
         async submitRequest(){
             const promptData = {prompt: this.prompt};
             this.isLoading = true;
+            this.playlists = [];
 
             try {
                 const response = await api.getMusic(promptData);
-                // console.log("📦 FULL RESPONSE:", response);
-                if (response.status === 200) {
-                    console.log("Inside if block");
-                    console.log("Repsonse Data: ", response.data);
-                    const outputString = response.data;
-                    const parsedOutput = JSON.parse(outputString);
-                    this.playlists = parsedOutput;
+                 console.log("📦 FULL RESPONSE:", response);
+                if (response.data.status == "SUCCEEDED") {
+                    this.fetchingStatus = "SUCCEEDED";
+                    this.playlists = response.data;
                     this.prompt = "";
+                } else {
+                    this.fetchingStatus = "FAILED";
                 }
   
             } catch (errorLog) {
