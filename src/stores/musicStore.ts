@@ -32,15 +32,18 @@ export const useMusicStore = defineStore('musicSearch', {
             try {
                 const response = await api.getMusic(promptData);
                  console.log("📦 FULL RESPONSE:", response);
-                if (response.data.status == "SUCCEEDED") {
+                 const parsedData = response.data;
+                if (parsedData.status == "SUCCEEDED") {
                     this.fetchingStatus = "SUCCEEDED";
-                    this.playlists = response.data;
+                    this.playlists = parsedData.output;
                     this.prompt = "";
                 } else {
                     this.fetchingStatus = "FAILED";
+                    console.log('Error fetching playlists: ', parsedData.error, '. Cause by: ', parsedData.cause); 
                 }
   
             } catch (errorLog) {
+                this.fetchingStatus = "FAILED";
                 this.isLoading = false;
                 console.error('Error fetching playlist:', errorLog);
                 alert('An error occurred while fetching playlists. Please try again.');

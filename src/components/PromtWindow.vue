@@ -11,8 +11,10 @@
         store.setPromt(target.value);
     };
     const handleSubmit = async () => {
+        console.log("Before submit, playlists: ", store.playlists.length);
         await store.submitRequest();
-        if(store.fetchingStatus == "SUCCEEDED") {
+        console.log("Afater submit, platlist: ",store.playlists.length);
+        if(store.playlists.length > 0) {
             router.push('/results')
         }
     }
